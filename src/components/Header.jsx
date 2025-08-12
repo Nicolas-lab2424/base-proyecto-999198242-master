@@ -4,6 +4,9 @@ import "../styles/components/header.css"
 const Header = () => {
   const { user, logout } = useAuth()
 
+
+
+
   const handleLogout = () => {
     logout()
   }
@@ -16,7 +19,7 @@ const Header = () => {
 
           {/* Logo */}
           {/* Esta funcionalidad esta buena */}
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to={user ? "/" : "/login"}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png"
               alt="logo"
