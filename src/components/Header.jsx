@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/UserContext"
-import "../styles/components/Header.css"
+import "../styles/components/header.css"
 const Header = () => {
   const { user, logout } = useAuth()
 
@@ -11,10 +11,11 @@ const Header = () => {
   return (
     <header>
       {/* barra  */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="barra navbar navbar-expand-lg   " style={{ backgroundColor: "#1E3A8A" }} >
         <div className="container-fluid">
 
           {/* Logo */}
+          {/* Esta funcionalidad esta buena */}
           <Link className="navbar-brand" to="/">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png"
