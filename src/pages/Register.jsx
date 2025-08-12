@@ -19,9 +19,13 @@ const Register = () => {
     setError("")
     setSuccess("")
 
-    if (!username || !email || !password) {
-      setError("Debes completar todos los campos")
+    // Validaciones que quise agregar
+    if (password.length < 5 || password === "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~") {
+      console.log("Tu contraseña debe tener al menos 5 caracteres y no debe tener simbolos especiales como: %,*,(, etc")
       return
+    }
+    else if (username.length < 5 || username === "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~") {
+
     }
 
     const newUser = {
@@ -58,7 +62,20 @@ const Register = () => {
 
   }
 
+  const handleUsername = async (e) => {
+    setUsername(e.target.value)
+    console.log("Good")
+  }
 
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+
+  }
 
   return (
     <Layout>
@@ -71,7 +88,7 @@ const Register = () => {
             <label>Username:</label>
             <input
               type="text"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={handleUsername}
               value={username}
             />
           </div>
@@ -79,7 +96,7 @@ const Register = () => {
             <label>Correo electrónico:</label>
             <input
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmail}
               value={email}
             />
           </div>
@@ -87,7 +104,7 @@ const Register = () => {
             <label>Contraseña:</label>
             <input
               type="password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePassword}
               value={password}
             />
           </div>
