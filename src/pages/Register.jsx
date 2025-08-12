@@ -87,6 +87,7 @@ const Register = () => {
           <div>
             <label>Username:</label>
             <input
+              required
               type="text"
               onChange={handleUsername}
               value={username}
@@ -94,7 +95,7 @@ const Register = () => {
           </div>
           <div>
             <label>Correo electrónico:</label>
-            <input
+            <input required
               type="email"
               onChange={handleEmail}
               value={email}
@@ -102,7 +103,7 @@ const Register = () => {
           </div>
           <div>
             <label>Contraseña:</label>
-            <input
+            <input required
               type="password"
               onChange={handlePassword}
               value={password}
