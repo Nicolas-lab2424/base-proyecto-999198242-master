@@ -19,7 +19,7 @@ const Header = () => {
 
           {/* Logo */}
           {/* Esta funcionalidad esta buena */}
-          <Link className="navbar-brand" to={user ? "/" : "/login"}>
+          <Link className="navbar-brand  text-white" to={user ? "/" : "/login"}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png"
               alt="logo"
@@ -44,7 +44,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to="/SobreNosotros" className="nav-link">Sobre Nosotros</Link>
+                <Link to="/SobreNosotros" className="nav-link  text-white">Sobre Nosotros</Link>
               </li>
 
 
@@ -52,11 +52,11 @@ const Header = () => {
                 <>
 
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">Inicio</Link>
+                    <Link to="/" className="nav-link  text-white">Inicio</Link>
                   </li>
 
                   <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                    <Link to="/dashboard" className="nav-link  text-white">Dashboard</Link>
                   </li>
 
                   <li className="nav-item">
@@ -73,10 +73,10 @@ const Header = () => {
               {!user && (
                 <>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link">Login</Link>
+                    <Link to="/login" className="nav-link text-white">Login</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/registrate" className="nav-link">Registrate</Link>
+                    <Link to="/registrate" className="nav-link  text-white">Registrate</Link>
                   </li>
                 </>
               )}
