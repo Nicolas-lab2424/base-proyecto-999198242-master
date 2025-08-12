@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/UserContext"
-
+import "../styles/components/Header.css"
 const Header = () => {
   const { user, logout } = useAuth()
 
@@ -39,15 +39,19 @@ const Header = () => {
           {/* Links */}
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">Inicio</Link>
-              </li>
+
 
               {user && (
                 <>
+
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link">Inicio</Link>
+                  </li>
+
                   <li className="nav-item">
                     <Link to="/dashboard" className="nav-link">Dashboard</Link>
                   </li>
+
                   <li className="nav-item">
                     <button
                       onClick={handleLogout}
