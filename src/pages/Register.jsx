@@ -1,5 +1,9 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
+import { useAuth } from "../context/UserContext"
+
+
+
 
 const Register = () => {
   const [username, setUsername] = useState("")
@@ -7,8 +11,10 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
+  const { register } = useAuth();
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
     setSuccess("")
@@ -30,7 +36,29 @@ const Register = () => {
     setUsername("")
     setEmail("")
     setPassword("")
+
+    const isRegister = await register(username, password, email)
+    console.log(isRegister)
+
+    if (isRegister) {
+      setSuccess("Usuario registrado con éxito")
+
+      //reset de formulario
+      setUsername("")
+      setEmail("")
+      setPassword("")
+
+      //despues de 3 s se borra el mensaje de exito.
+      setTimeout(() => {
+        setSuccess("")
+        navigate("/")
+      }, 1500)
+    }
+
+
   }
+
+
 
   return (
     <Layout>
