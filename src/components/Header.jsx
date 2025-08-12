@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header>
       {/* barra  */}
-      <nav className="barra navbar navbar-expand-lg   " style={{ backgroundColor: "#1E3A8A" }} >
+      <nav className="barra navbar navbar-expand-lg" style={{ backgroundColor: "#1E3A8A" }} >
         <div className="container-fluid">
 
           {/* Logo */}
@@ -40,6 +40,9 @@ const Header = () => {
           {/* Links */}
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link to="/SobreNosotros" className="nav-link">Sobre Nosotros</Link>
+              </li>
 
 
               {user && (
