@@ -70,7 +70,7 @@ const Register = () => {
     } else if (/[!\"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/.test(value)) {
       setPasswordError("No se permiten símbolos especiales como %, *, (, etc.")
     } else {
-      setPasswordError("") // no hay error
+      setPasswordError("")
     }
   }
 

@@ -11,6 +11,7 @@ const Home = () => {
   const [descriptionEdit, setDescriptionEdit] = useState("")
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
 
   // simulando existencia del usuario, proximamente este estado será global
   const { user } = useAuth()
@@ -83,6 +84,12 @@ const Home = () => {
     }
   }
 
+  const filteredProducts = products.filter(product =>
+    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.category.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
+
   return (
     <Layout>
       <section>
@@ -111,6 +118,16 @@ const Home = () => {
       <section>
         <h2>Nuestros productos</h2>
         <p>Elegí entre nuestras categorías más populares.</p>
+
+
+        <input
+          type="text"
+          placeholder="Buscar por título o categoría..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ padding: "8px", marginBottom: "16px", width: "30%" }}
+        />
+
 
 
         {
