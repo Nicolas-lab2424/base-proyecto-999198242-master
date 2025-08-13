@@ -95,8 +95,8 @@ const Home = () => {
   }
 
   const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
-    product.category.toLowerCase().includes(debouncedSearch.toLowerCase())
+    product.title.toLowerCase().includes(debouncedSearch.toLowerCase())
+
   )
 
 
