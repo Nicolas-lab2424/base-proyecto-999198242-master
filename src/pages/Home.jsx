@@ -102,99 +102,133 @@ const Home = () => {
 
   return (
     <Layout>
-      <section>
-        <h1>Bienvenido a Nuestra Tienda</h1>
-        <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
+      <section className="text-center my-5">
+        <h1 className="fw-bold" style={{ color: "#1E3A8A" }}>Bienvenido a Nuestra Tienda</h1>
+        <p style={{ color: "#1E3A8A" }} className="lead text-muted">Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
       </section>
 
-      <section>
-        <h2>¿Por qué elegirnos?</h2>
-        <ul>
-          <li>
-            <h3>Envíos a todo el país</h3>
-            <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
-          </li>
-          <li>
-            <h3>Pagos seguros</h3>
-            <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
-          </li>
-          <li>
-            <h3>Atención personalizada</h3>
-            <p>Estamos disponibles para ayudarte en todo momento.</p>
-          </li>
-        </ul>
+      <section className="my-5">
+        <h2 className="text-center text-muted mb-4">¿Por qué elegirnos?</h2>
+        <div className="row text-center">
+          {[
+            { title: "Envíos a todo el país", text: "Recibí tu compra en la puerta de tu casa estés donde estés." },
+            { title: "Pagos seguros", text: "Trabajamos con plataformas que garantizan tu seguridad." },
+            { title: "Atención personalizada", text: "Estamos disponibles para ayudarte en todo momento." }
+          ].map((item, idx) => (
+            <div key={idx} className="col-md-4 mb-4">
+              <div style={{ backgroundColor: "#F9FAFB" }} className="p-4 border rounded shadow-sm h-100">
+                <h3 style={{ color: "#1E3A8A" }} className="fw-bold">{item.title}</h3>
+                <p className="text-muted">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </section>
 
-      <section>
-        <h2>Nuestros productos</h2>
-        <p>Elegí entre nuestras categorías más populares.</p>
+      <section className="my-5">
+        <h2 className="text-center mb-4 fw-semibold" style={{ color: "#1E3A8A" }}>Nuestros productos</h2>
+        <p className="text-center text-muted mb-4">Elegí entre nuestras categorías más populares.</p>
 
 
-        <input
-          type="text"
-          placeholder="Buscar por título o categoría..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ padding: "8px", marginBottom: "16px", width: "30%" }}
-        />
+        <div className="d-flex justify-content-center mb-4">
+          <input
+            className="form-control w-50 shadow-sm"
+            type="text"
+            placeholder="Buscar por título o categoría..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ borderColor: "#1E3A8A", padding: "8px", marginBottom: "16px", width: "30%" }}
+          />
+        </div>
 
 
 
         {
-          showPopup && <section className="popup-edit">
-            <h2>Editando producto.</h2>
-            <button onClick={() => setShowPopup(null)}>Cerrar</button>
-            <form onSubmit={handleUpdate}>
+          showPopup && <section className="popup-edit  mb-4 p-4 border rounded shadow-sm">
+            <h2 className="fw-semibold mb-3">Editando producto.</h2>
+            <button className="btn btn-secondary mb-3" onClick={() => setShowPopup(null)}>Cerrar</button>
+            <form className="d-flex flex-column gap-2" onSubmit={handleUpdate}>
               <input
+                className="form-control"
                 type="text"
                 placeholder="Ingrese el titulo"
                 value={titleEdit}
                 onChange={(e) => setTitleEdit(e.target.value)}
               />
               <input
+                className="form-control"
                 type="number"
                 placeholder="Ingrese el precio"
                 value={priceEdit}
                 onChange={(e) => setPriceEdit(e.target.value)}
               />
               <textarea
+                className="form-control"
                 placeholder="Ingrese la descripción"
                 value={descriptionEdit}
                 onChange={(e) => setDescriptionEdit(e.target.value)}
               ></textarea>
               <input
+                className="form-control"
                 type="text"
                 placeholder="Ingrese la categoria"
                 value={categoryEdit}
                 onChange={(e) => setCategoryEdit(e.target.value)}
               />
               <input
+                className="form-control"
                 type="text"
                 placeholder="Ingrese la URL de la imagen"
                 value={imageEdit}
                 onChange={(e) => setImageEdit(e.target.value)}
               />
-              <button>Actualizar</button>
+              <button className="btn btn-primary mt-2">Actualizar</button>
             </form>
           </section>
         }
+        <div className="container my-5">
+          <div className="row g-4">
 
-        <div>
-          {
-            filteredProducts.map((product) => <div key={product.id}>
-              <h2 key={product.id}>{product.title}</h2>
-              <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
-              <p>${product.price}</p>
-              <p>{product.description}</p>
-              <p><strong>{product.category}</strong></p>
-              {
-                user && <div>
-                  <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
-                  <button onClick={() => handleDelete(product.id)}>Borrar</button>
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div className="card h-100 shadow-sm border-0" style={{ backgroundColor: "#FFFFFF" }}>
+                  <img
+                    src={product.image}
+                    className="card-img-top"
+                    alt={`Imagen de ${product.title}`}
+                    style={{ height: "200px", objectFit: "contain" }}
+                  />
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title fw-bold" style={{ color: "#1E3A8A" }}>{product.title}</h5>
+                    <p className="card-text text-muted" style={{ fontSize: "0.9rem" }}>
+                      {product.description.length > 60
+                        ? product.description.slice(0, 60) + "..."
+                        : product.description}
+                    </p>
+                    <p className="text-secondary mb-1">{product.category}</p>
+                    <p className="fw-semibold fs-5" style={{ color: "#1E3A8A" }}>${product.price}</p>
+                    {user && (
+                      <div className="mt-auto d-flex gap-2">
+                        <button
+                          className="btn btn-warning btn-sm"
+                          onClick={() => handleOpenEdit(product)}
+                        >
+                          Actualizar
+                        </button>
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() => handleDelete(product.id)}
+                        >
+                          Borrar
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              }
-            </div>)
-          }
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </Layout>
