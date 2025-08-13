@@ -85,7 +85,7 @@ const Register = () => {
 
       <section className="container mt-4" style={{ backgroundColor: "#F3F4F6", borderRadius: "8px", padding: "2rem" }}>
         <div className="row justify-content-center">
-          <div className="col-md-5" >
+          <div className="col-md-5 ">
             <form onSubmit={handleSubmit} className="p-3 border rounded-3 bg-light" style={{ backgroundColor: "#FFFFFF" }}>
               <h2 className="text-center fs-5 text-muted mb-4" style={{ color: "#1E3A8A" }} > Hola, bienvenido</h2>
               <div className="mb-3">
