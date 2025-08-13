@@ -12,6 +12,7 @@ const Home = () => {
   const [categoryEdit, setCategoryEdit] = useState("")
   const [imageEdit, setImageEdit] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
+  const [debouncedSearch, setDebouncedSearch] = useState("")
 
   // simulando existencia del usuario, proximamente este estado será global
   const { user } = useAuth()
@@ -26,6 +27,15 @@ const Home = () => {
   useEffect(() => {
     fetchingProducts()
   }, [])
+
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchTerm)
+    }, 400)
+
+    return () => clearTimeout(handler)
+  }, [searchTerm])
 
   const handleDelete = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, { method: "DELETE" })
@@ -85,8 +95,8 @@ const Home = () => {
   }
 
   const filteredProducts = products.filter(product =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchTerm.toLowerCase())
+    product.title.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+    product.category.toLowerCase().includes(debouncedSearch.toLowerCase())
   )
 
 
@@ -171,7 +181,7 @@ const Home = () => {
 
         <div>
           {
-            products.map((product) => <div key={product.id}>
+            filteredProducts.map((product) => <div key={product.id}>
               <h2 key={product.id}>{product.title}</h2>
               <img width="80px" src={product.image} alt={`Imagen de ${product.title}`} />
               <p>${product.price}</p>

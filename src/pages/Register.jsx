@@ -81,48 +81,55 @@ const Register = () => {
 
   return (
     <Layout>
-      <h1>Registrate</h1>
+      <h1 className="text-center mt-4" >Registrate</h1>
 
-      <section>
-        <h2>Hola, bienvenido</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username:</label>
-            <input
-              required
-              type="text"
-              onChange={handleUsername}
-              value={username}
-            />
-          </div>
-          <div>
-            <label>Correo electrónico:</label>
-            <input required
-              type="email"
-              onChange={handleEmail}
-              value={email}
-            />
-          </div>
-          <div>
-            <label>Contraseña:</label>
-            <input required
-              type="password"
-              onChange={handlePassword}
-              value={password}
-            />
-          </div>
-          {passwordError && (
-            <p style={{ color: "red", fontSize: "0.9em" }}>{passwordError}</p>
-          )}
-          <button>Ingresar</button>
-        </form>
+      <section className="container mt-4">
+        <div className="row justify-content-center">
+          <div className="col-md-6 col-lg-4">
+            <div className="card shadow-sm p-4">
+              <h2 className="text-center mb-4">Hola, bienvenido</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Username:</label>
+                  <input
+                    required
+                    type="text"
+                    onChange={handleUsername}
+                    value={username}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Correo electrónico:</label>
+                  <input required
+                    type="email"
+                    onChange={handleEmail}
+                    value={email}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Contraseña:</label>
+                  <input required
+                    type="password"
+                    onChange={handlePassword}
+                    value={password}
+                  />
+                </div>
+                {passwordError && (
+                  <p className="text-danger small">{passwordError}</p>
+                )}
+                <button className="btn btn-primary w-100">Ingresar</button>
+              </form>
 
-        {
-          error && <p style={{ color: "red" }}>{error}</p>
-        }
-        {
-          success && <p style={{ color: "green" }}>{success}</p>
-        }
+              {
+                error && <p className="text-danger mt-3">{error}</p>
+              }
+              {
+                success && <p className="text-success mt-3">{success}</p>
+              }
+            </div>
+          </div>
+        </div>
+
       </section>
     </Layout>
   )
