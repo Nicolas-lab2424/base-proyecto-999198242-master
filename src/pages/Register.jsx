@@ -9,6 +9,7 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [passwordError, setPasswordError] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
   const { register } = useAuth();
@@ -19,14 +20,7 @@ const Register = () => {
     setError("")
     setSuccess("")
 
-    // Validaciones que quise agregar
-    if (password.length < 5 || password === "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~") {
-      console.log("Tu contraseña debe tener al menos 5 caracteres y no debe tener simbolos especiales como: %,*,(, etc")
-      return
-    }
-    else if (username.length < 5 || username === "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~") {
-
-    }
+    if (passwordError) return;
 
     const newUser = {
       username,
@@ -69,7 +63,15 @@ const Register = () => {
 
 
   const handlePassword = (e) => {
-    setPassword(e.target.value)
+    const value = e.target.value
+    setPassword(value)
+    if (value.length < 5) {
+      setPasswordError("La contraseña debe tener al menos 5 caracteres.")
+    } else if (/[!\"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/.test(value)) {
+      setPasswordError("No se permiten símbolos especiales como %, *, (, etc.")
+    } else {
+      setPasswordError("") // no hay error
+    }
   }
 
   const handleEmail = (e) => {
@@ -109,6 +111,9 @@ const Register = () => {
               value={password}
             />
           </div>
+          {passwordError && (
+            <p style={{ color: "red", fontSize: "0.9em" }}>{passwordError}</p>
+          )}
           <button>Ingresar</button>
         </form>
 
