@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/UserContext"
-import "../styles/components/header.css"
+
 const Header = () => {
   const { user, logout } = useAuth()
 
@@ -19,7 +19,7 @@ const Header = () => {
 
           {/* Logo */}
           {/* Esta funcionalidad esta buena */}
-          <Link className="navbar-brand  text-white" to={user ? "/" : "/login"}>
+          <Link className="navbar-brand  text-white" to="/" >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png"
               alt="logo"
@@ -46,7 +46,9 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/SobreNosotros" className="nav-link  text-white">Sobre Nosotros</Link>
               </li>
-
+              <li className="nav-item">
+                <Link to="/" className="nav-link  text-white">Inicio</Link>
+              </li>
 
               {user && (
                 <>
