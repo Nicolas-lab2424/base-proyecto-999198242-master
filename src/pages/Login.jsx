@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("");
   const { login } = useAuth()
 
   const nagivate = useNavigate()
@@ -22,6 +23,14 @@ const Login = () => {
       setPassword("")
       nagivate("/")
     }
+
+    if (username !== "johnd" || password !== "m38rmF$") {
+      setError("Usuario o contraseña incorrectos");
+    } else {
+      setError("");
+
+    }
+
   }
 
   return (
@@ -42,6 +51,8 @@ const Login = () => {
               <p className="text-center small mb-4" style={{ color: "#6B7280" }}>
                 <strong>Usuario de prueba:</strong> <span className="fst-italic">johnd</span> / <span className="fst-italic">m38rmF$</span>
               </p>
+
+              {error && <p className="text-center text-danger fw-semibold">{error}</p>}
               <div className="mb-3">
                 <label className="form-label small fw-semibold" style={{ color: "#1E3A8A" }}>Nombre de usuario:</label>
                 <input
