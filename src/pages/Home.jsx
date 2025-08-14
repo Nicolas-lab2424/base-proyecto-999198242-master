@@ -145,7 +145,7 @@ const Home = () => {
 
 
         {
-          showPopup && <section style={{
+          showPopup && <section id="editor" style={{
             maxWidth: "500px",
             backgroundColor: "#f8f9fa",
             borderColor: "#dee2e6"
@@ -208,6 +208,7 @@ const Home = () => {
                 }}
               />
               <button className="btn btn-primary mt-2"
+
                 style={{
                   background: "linear-gradient(90deg, #1d3c8a, #2449a3)",
                   border: "none"
@@ -242,7 +243,7 @@ const Home = () => {
                           className="btn btn-warning btn-sm"
                           onClick={() => handleOpenEdit(product)}
                         >
-                          Actualizar
+                          <a href="#editor" style={{ color: "white", textDecoration: "None" }}>Actualzar</a>
                         </button>
                         <button
                           className="btn btn-danger btn-sm"
