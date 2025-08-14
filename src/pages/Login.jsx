@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Login = () => {
   const [username, setUsername] = useState("")
@@ -68,6 +69,12 @@ const Login = () => {
                 }}
                 onMouseOver={(e) => (e.target.style.backgroundColor = "#3B82F6")}
                 onMouseOut={(e) => (e.target.style.backgroundColor = "#1E3A8A")}>Ingresar</button>
+              <div className="text-center mt-3">
+                <span>¿No tienes cuenta? </span>
+                <Link to="/Register" className="text-primary fw-semibold">
+                  Regístrate
+                </Link>
+              </div>
             </form>
           </div>
         </div>
