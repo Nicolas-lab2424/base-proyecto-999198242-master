@@ -145,8 +145,12 @@ const Home = () => {
 
 
         {
-          showPopup && <section className="popup-edit  mb-4 p-4 border rounded shadow-sm">
-            <h2 className="fw-semibold mb-3">Editando producto.</h2>
+          showPopup && <section style={{
+            maxWidth: "500px",
+            backgroundColor: "#f8f9fa",
+            borderColor: "#dee2e6"
+          }} className="popup-edit  mb-4 p-4 border rounded shadow-sm">
+            <h2 className="fw-semibold mb-3" style={{ color: "#1d3c8a" }}>Editando producto.</h2>
             <button className="btn btn-secondary mb-3" onClick={() => setShowPopup(null)}>Cerrar</button>
             <form className="d-flex flex-column gap-2" onSubmit={handleUpdate}>
               <input
@@ -155,6 +159,10 @@ const Home = () => {
                 placeholder="Ingrese el titulo"
                 value={titleEdit}
                 onChange={(e) => setTitleEdit(e.target.value)}
+                style={{
+                  border: "1px solid #1d3c8a",
+                  boxShadow: "none"
+                }}
               />
               <input
                 className="form-control"
@@ -162,12 +170,20 @@ const Home = () => {
                 placeholder="Ingrese el precio"
                 value={priceEdit}
                 onChange={(e) => setPriceEdit(e.target.value)}
+                style={{
+                  border: "1px solid #1d3c8a",
+                  boxShadow: "none"
+                }}
               />
               <textarea
                 className="form-control"
                 placeholder="Ingrese la descripción"
                 value={descriptionEdit}
                 onChange={(e) => setDescriptionEdit(e.target.value)}
+                style={{
+                  border: "1px solid #1d3c8a",
+                  boxShadow: "none"
+                }}
               ></textarea>
               <input
                 className="form-control"
@@ -175,6 +191,10 @@ const Home = () => {
                 placeholder="Ingrese la categoria"
                 value={categoryEdit}
                 onChange={(e) => setCategoryEdit(e.target.value)}
+                style={{
+                  border: "1px solid #1d3c8a",
+                  boxShadow: "none"
+                }}
               />
               <input
                 className="form-control"
@@ -182,8 +202,16 @@ const Home = () => {
                 placeholder="Ingrese la URL de la imagen"
                 value={imageEdit}
                 onChange={(e) => setImageEdit(e.target.value)}
+                style={{
+                  border: "1px solid #1d3c8a",
+                  boxShadow: "none"
+                }}
               />
-              <button className="btn btn-primary mt-2">Actualizar</button>
+              <button className="btn btn-primary mt-2"
+                style={{
+                  background: "linear-gradient(90deg, #1d3c8a, #2449a3)",
+                  border: "none"
+                }}>Actualizar</button>
             </form>
           </section>
         }
