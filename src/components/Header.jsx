@@ -14,17 +14,23 @@ const Header = () => {
   return (
     <header>
       {/* barra  */}
-      <nav className="barra navbar navbar-expand-lg" style={{ backgroundColor: "#1E3A8A" }} >
+      <nav className="fixed-top barra navbar navbar-expand-lg" style={{ backgroundColor: "#1E3A8A" }} >
         <div className="container-fluid">
 
           {/* Logo */}
-          {/* Esta funcionalidad esta buena */}
-          <Link className="navbar-brand  text-white" to="/" >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png"
-              alt="logo"
-              height="40"
-            />
+
+
+          <Link
+            className="navbar-brand fw-bold text-white"
+            to="/"
+            style={{
+              fontFamily: "Edu NSW ACT Cursive",
+              fontSize: "1.8rem",
+              letterSpacing: "1px",
+              textDecoration: "none"
+            }}
+          >
+            LOGO
           </Link>
 
           {/* menu hamburguesa*/}
@@ -82,7 +88,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </header >
   )
 }
 

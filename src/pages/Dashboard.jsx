@@ -51,42 +51,43 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <h1>Panel de Administración</h1>
+      <h1 className="text-center fw-bold my-4" style={{ color: "#1d3c8a" }}>Panel de Administración</h1>
 
-      <section>
-        <h2>Cargar nuevo producto</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Nombre del producto:</label>
-            <input type="text" name="nombre" onChange={(e) => setName(e.target.value)} value={name} />
+      <section className="container">
+        <h2 className="fw-semibold mb-3" style={{ color: "#1d3c8a" }}>Cargar nuevo producto</h2>
+        <form className="p-4 border rounded shadow-sm bg-light" onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label fw-semibold">Nombre del producto:</label>
+            <input className="form-control border-primary" type="text" name="nombre" onChange={(e) => setName(e.target.value)} value={name} />
           </div>
 
           <div>
-            <label>Precio:</label>
-            <input type="number" name="precio" onChange={(e) => setPrice(e.target.value)} value={price} />
+            <label className="form-label fw-semibold">Precio:</label>
+            <input className="form-control border-primary" type="number" name="precio" onChange={(e) => setPrice(e.target.value)} value={price} />
           </div>
 
           <div>
-            <label>Descripción:</label>
-            <textarea name="descripcion" rows="4" onChange={(e) => setDescription(e.target.value)} value={description} />
+            <label className="form-label fw-semibold">Descripción:</label>
+            <textarea className="form-control border-primary" name="descripcion" rows="4" onChange={(e) => setDescription(e.target.value)} value={description} />
           </div>
 
           {
-            error && <p className="error">{error}</p>
+            error && <p className="error text-danger fw-semibold">{error}</p>
           }
 
-          <button>Guardar producto</button>
+          <button className="btn w-100"
+            style={{ backgroundColor: "#1d3c8a", color: "white" }}>Guardar producto</button>
         </form>
 
         {
-          product && <div>
-            <h3>{product.title}</h3>
-            <p>${product.price}</p>
+          product && <div className="mt-4 p-3 border rounded bg-white shadow-sm">
+            <h3 className="fw-bold" style={{ color: "#1d3c8a" }}>{product.title}</h3>
+            <p className="text-success fw-semibold">${product.price}</p>
             <p>{product.description}</p>
           </div>
         }
       </section>
-    </Layout>
+    </Layout >
   )
 }
 
