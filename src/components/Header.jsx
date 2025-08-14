@@ -80,7 +80,7 @@ const Header = () => {
                     <Link to="/login" className="nav-link text-white">Login</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/registrate" className="nav-link  text-white">Registrate</Link>
+                    <Link to="/register" className="nav-link  text-white">Registrate</Link>
                   </li>
                 </>
               )}

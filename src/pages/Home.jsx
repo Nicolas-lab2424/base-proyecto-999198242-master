@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/UserContext"
-
+import "../style/general.css"
 const Home = () => {
   const [products, setProducts] = useState([])
   const [showPopup, setShowPopup] = useState(null)
